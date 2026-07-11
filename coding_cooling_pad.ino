@@ -13,13 +13,13 @@ void setup() {
   Serial.setTimeout(50);
   pinMode(pinMosfet, OUTPUT);
 
-  // Inisialisasi OLED (tetap dipasang di kode meski fisiknya belum ada)
+  
   if(display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
     display.clearDisplay();
     display.setTextSize(2);
     display.setTextColor(WHITE);
     display.setCursor(20, 20);
-    display.println("LOQ COOL");
+    display.println("COOL");
     display.display();
     delay(2000);
   }
@@ -35,12 +35,11 @@ void loop() {
       int tGPU = data.substring(komaIndex + 1).toInt();
       int suhuMax = max(tCPU, tGPU);
 
-      // KONTROL KIPAS: 40C (0%) sampai 80C (100%)
+      
       int pwm = map(constrain(suhuMax, 40, 80), 40, 80, 0, 255);
       analogWrite(pinMosfet, pwm);
 
-      // UPDATE OLED (nanti otomatis nyala pas dipasang)
-      display.clearDisplay();
+      
       display.setTextSize(1);
       display.setTextColor(WHITE);
       display.setCursor(0,0);
