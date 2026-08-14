@@ -36,7 +36,7 @@ void loop() {
       int suhuMax = max(tCPU, tGPU);
 
       
-      int pwm = map(constrain(suhuMax, 40, 80), 40, 80, 0, 255);
+      int pwm = map(constrain(suhuMax, 50, 80), 50, 80, 0, 255);
       analogWrite(pinMosfet, pwm);
 
       
